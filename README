@@ -1,0 +1,31 @@
+A SigTest (http://sigtest.java.net/) plugin for ignoring elements marked with
+a specified annotation.
+
+Installation
+============
+
+Compile and install locally using maven:
+
+mvn install
+
+Usage
+=====
+
+The plugin has only been tested from the SigTest command line tools. (The
+SigTest Ant Task and Maven Plugins don't support SigTest plugins yet.)
+
+You need to add the plugin jar to the Java classpath of the tool:
+
+/path/to/.m2/repository/name/tomwhite/sigtest-annotatations-plugin/1.0-SNAPSHOT/sigtest-annotations-plugin-1.0-SNAPSHOT.jar
+
+Specify the name of the plugin with the -Plugin option:
+
+-Plugin name.tomwhite.sigtest.ExcludeAnnotationsPlugin
+
+Specify the annotations to ignore using the
+name.tomwhite.sigtest.excludedAnnotations system property, which expects a
+comma-separated list of fully-qualified class names.
+
+Here's an example which ignores classes marked with Guava's Beta annotation:
+
+-Dname.tomwhite.sigtest.excludedAnnotations=com.google.common.annotations.Beta
